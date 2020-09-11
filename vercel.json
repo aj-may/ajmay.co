@@ -1,6 +1,10 @@
 {
   "redirects": [
     {
+      "source": "/thanks",
+      "destination": "https://thank-you-alex.vercel.app"
+    },
+    {
       "source": "/",
       "destination": "https://github.com/aj-may"
     }
