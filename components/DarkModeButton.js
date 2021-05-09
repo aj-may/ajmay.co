@@ -1,8 +1,8 @@
 import { IconButton, useColorMode } from 'theme-ui'
 import {
-  Brightness3 as Moon,
-  WbSunny as Sun,
-} from '@material-ui/icons'
+  MdBrightness3 as Moon,
+  MdWbSunny as Sun,
+} from 'react-icons/md'
 
 export default function DarkModeButton() {
   const [mode, setMode] = useColorMode();

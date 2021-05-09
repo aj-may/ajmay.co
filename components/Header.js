@@ -1,5 +1,5 @@
 import { Box, Heading } from 'theme-ui'
-import { GitHub, Twitter } from '@material-ui/icons'
+import { AiFillGithub as GitHub, AiOutlineTwitter as Twitter } from 'react-icons/ai'
 import Link from 'components/Link'
 import DarkModeButton from 'components/DarkModeButton'
 
