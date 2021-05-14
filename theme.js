@@ -4,6 +4,16 @@ export default {
     heading: '"Raleway", sans-serif',
     monospace: '"Source Code Pro", monospace',
   },
+  fontSizes: ['1rem', '2rem', '3rem,', '4rem', '5rem', '6rem'],
+  fontWeights: {
+    body: 300,
+    heading: 100,
+    bold: 400,
+  },
+  lineHeights: {
+    body: 1.5,
+    heading: 1.125,
+  },
   colors: {
     text: '#000',
     background: '#fff',
@@ -47,9 +57,14 @@ export default {
   styles: {
     root: {
       fontFamily: 'body',
+      fontWeight: 'body',
+      lineHeight: 'body',
     },
     a: {
       color: 'primary',
+    },
+    h1: {
+      color: 'red',
     },
   },
   breakpoints: ['60em'],
