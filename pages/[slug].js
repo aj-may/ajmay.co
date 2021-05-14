@@ -1,25 +1,30 @@
-import { Box, Paragraph, Link } from 'theme-ui'
-import { useQuery } from 'react-query'
-import contentful from 'lib/contentful'
+import { Box } from 'theme-ui'
+import { getProjects, getProject } from 'services/contentful'
 import Header from 'components/Header'
+import Content from 'components/Content'
 
-const ProjectLink = ({ name, slug }) => <Link
-  key={slug}
-  sx={{ pr: '4rem', display: 'inline-block', textDecoration: 'none', color: 'primary' }}
-  href={`/${slug}`}>
-    {name}
-  </Link>;
-
-export default function Home() {
-  const { isLoading, isError, data } = useQuery('projects', async () => {
-    const result = await contentful.getEntries({ 'content_type': 'project' });
-    return result.items;
-  });
-
+export default function Project({ project }) {
   return <>
-    <Header />
+    <Header subheader={project.name} />
     <Box sx={{ mx: '6rem', my: '4rem' }}>
-      
+      <Content field={project.content} />
+
+      <pre>{JSON.stringify(project, null, 2)}</pre>
     </Box>
   </>;
+}
+
+export async function getStaticProps({ params: { slug } }) {
+  const project = await getProject(slug);
+
+  return {
+    props: { project },
+  }
+}
+
+export async function getStaticPaths() {
+  const projects = await getProjects();
+  const paths = projects.map(({ slug }) => ({ params: { slug } }));
+
+  return { paths, fallback: false };
 }

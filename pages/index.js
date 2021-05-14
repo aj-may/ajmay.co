@@ -1,14 +1,12 @@
 import { Box, Paragraph } from 'theme-ui'
 import { useQuery } from 'react-query'
-import contentful from 'lib/contentful'
+import { getProjects } from 'services/contentful'
 import Header from 'components/Header'
 import Link from 'components/Link'
 
-
-export default function Home() {
-  const { isLoading, isError, data } = useQuery('projects', async () => {
-    const result = await contentful.getEntries({ 'content_type': 'project' });
-    return result.items;
+export default function Home({ projects }) {
+  const { isLoading, isError, data } = useQuery('projects', getProjects, {
+    initialData: projects,
   });
 
   return <>
@@ -17,9 +15,17 @@ export default function Home() {
       <Paragraph sx={{ lineHeight: ['2.2rem', '3rem'] }}>
         {isLoading && "Loading..."}
         {isError && "Unable to load Projects at this time.  Try again later."}
-        {data && data.map(({ fields: { slug, name }}) =>
+        {data && data.map(({ slug, name }) =>
           <Link variant="project" href={`/${slug}`} key={slug}>{name}</Link>)}
       </Paragraph>
     </Box>
   </>;
+}
+
+export async function getStaticProps() {
+  const projects = await getProjects();
+
+  return {
+    props: { projects },
+  }
 }
