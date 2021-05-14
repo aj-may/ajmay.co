@@ -8,7 +8,7 @@ export default function DarkModeButton() {
   const [mode, setMode] = useColorMode();
   const toggleMode = () => setMode(mode === 'light' ? 'dark' : 'light');
 
-  return <IconButton aria-label="Toggle dark mode" onClick={toggleMode} sx={{ color: mode === 'light' ? 'inherit' : '#FFF176' }}>
-    {mode === 'light' ? <Moon /> : <Sun />}
+  return <IconButton aria-label="Toggle dark mode" onClick={toggleMode} sx={{ color: mode === 'dark' ? '#FFF176' : 'inherit' }}>
+    {mode === 'dark' ? <Sun /> : <Moon />}
   </IconButton>;
 }
