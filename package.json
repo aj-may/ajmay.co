@@ -1,18 +1,21 @@
 {
-  "name": "ajmay-co",
-  "version": "1.0.0",
+  "name": "ajmay.co",
+  "version": "0.1.0",
   "private": true,
-  "bin": {
-    "shorten": "node_modules/.bin/vercel-redirects"
-  },
-  "devDependencies": {
-    "vercel-redirects": "^1.2.0"
-  },
   "scripts": {
-    "build": "echo \"vercel dev requires a build script & public directory. don't delete\"",
-    "shorten": "vercel-redirects"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
   },
-  "vercel-redirects": {
-    "autoPush": true
+  "dependencies": {
+    "@contentful/rich-text-react-renderer": "^14.1.3",
+    "contentful": "^8.3.1",
+    "next": "10.1.3",
+    "normalize.css": "^8.0.1",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "react-icons": "^4.2.0",
+    "react-query": "^3.13.11",
+    "theme-ui": "^0.7.3"
   }
 }
